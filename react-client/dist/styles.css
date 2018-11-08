@@ -14,17 +14,23 @@ body, html {
 }
 
 header {
-  display: block;
   background-color: green;
   width: 100%;
   color: white;
   height: 2rem;
 }
 #headerButtons {
-  list-style-type: none;
+  display: flex;
+  flex-direction: row;
   margin: 0;
   padding: 0;
 }
+
+#headerButtons > li {
+  margin: auto;
+  line-height: 2rem;
+}
+
 footer {
   display: block;
   width: 100%;
