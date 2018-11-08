@@ -1,0 +1,59 @@
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+#app {
+  height: 100%;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+header {
+  display: block;
+  background-color: green;
+  width: 100%;
+  color: white;
+  height: 2rem;
+}
+#headerButtons {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+footer {
+  display: block;
+  width: 100%;
+  background-color: black;
+  color: white;
+  height: 2rem;
+}
+
+.home-page {
+  background-image: url("./DSC_9162.JPG");
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  flex: 1 1 0;
+}
+
+.home-page > h1 {
+  text-align: center;
+  color: red;
+  font-family: sans-serif;
+  opacity: 0.5;
+}
+
+.home-page > p {
+  text-align: center;
+  color: red;
+  font-family: sans-serif;
+  opacity: 0.5;
+}
