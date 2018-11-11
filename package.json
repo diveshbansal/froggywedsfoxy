@@ -21,6 +21,7 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "react": "^16.6.1",
+    "react-bootstrap": "^0.32.4",
     "react-dom": "^16.6.1",
     "react-grid-gallery": "^0.5.3",
     "react-router": "^4.3.1",

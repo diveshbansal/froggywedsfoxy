@@ -83,7 +83,7 @@ const IMAGES =
         //thumbnailWidth: 320,
         //thumbnailHeight: 174
 }]
-class PhotoGrid extends Component {
+class PhotoGridPage extends Component {
 
   render(){
     return(
@@ -91,4 +91,4 @@ class PhotoGrid extends Component {
     );
   }
 }
-export default PhotoGrid;
+export default PhotoGridPage;
