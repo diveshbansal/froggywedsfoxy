@@ -9,7 +9,7 @@ class HomePage extends Component {
     return (
       <div class="home">
         <LandingPage />
-        <CarouselPage />
+        {/* <CarouselPage /> */}
         <InvitePage />
         <PhotoGridPage />
       </div>

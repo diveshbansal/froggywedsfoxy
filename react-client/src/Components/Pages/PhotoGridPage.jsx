@@ -1,93 +1,115 @@
-import { render } from 'react-dom';
-import Gallery from 'react-grid-gallery';
 import React, { Component } from 'react';
+import Gallery from "react-photo-gallery";
+import Lightbox from 'react-images';
 
-const IMAGES =
-[
-{
-        src: "images/grid_2.jpg",
-        thumbnail: "images/grid_2.jpg",
-        //thumbnailWidth: 320,
-        //thumbnailHeight: 212,
-        //tags: [{value: "Ocean", title: "Ocean"}, {value: "People", title: "People"}],       
-},
+const photos = [
+  {
+    src: "images/grid_2.jpg",
+    width: 1,
+    height: 1
+  },
+  {
+    src: "images/grid_3.jpg",
+    width: 1,
+    height: 1
+  },
+  {
+    src: "images/grid_9.jpg",
+    width: 5,
+    height: 3
+  },
+  {
+    src: "images/grid_5.jpg",
+    width: 92,
+    height: 100
+  },
+  {
+    src: "images/grid_8.jpg",
+    width: 2,
+    height: 3
+  },
+  {
+    src: "images/grid_11.jpg",
+    width: 4,
+    height: 3
+  },
+  {
+    src: "images/grid_12.jpg",
+    width: 4,
+    height: 3
+  },
+  {
+    src: "images/grid_13.jpg",
+    width: 5,
+    height: 3
+  },
+  {
+    src: "images/grid_14.jpg",
+    width: 3,
+    height: 4
+  },
+  {
+    src: "images/grid_15.jpg",
+    width: 4,
+    height: 3
+  },
+  {
+    src: "images/grid_16.jpg",
+    width: 2,
+    height: 3
+  },
+  {
+    src: "images/grid_17.jpg",
+    width: 1,
+    height: 1
+  }
+]
+const columns = 6;
 
-{
-        src: "images/grid_3.jpg",
-        thumbnail: "images/grid_3.jpg",
-        //thumbnailWidth: 320,
-        //thumbnailHeight: 212
-},
-{
-        src: "images/grid_9.jpg",
-        thumbnail: "images/grid_9.jpg",
-        //thumbnailWidth: 320,
-        //thumbnailHeight: 174
-},
-{
-        src: "images/grid_5.jpg",
-        thumbnail: "images/grid_5.jpg",
-        //thumbnailWidth: 320,
-        //thumbnailHeight: 212,
-        //tags: [{value: "Ocean", title: "Ocean"}, {value: "People", title: "People"}],
-        
-},
-{
-        src: "images/grid_8.jpg",
-        thumbnail: "images/grid_8.jpg",
-        //thumbnailWidth: 320,
-        //thumbnailHeight: 212,
-        //tags: [{value: "Ocean", title: "Ocean"}, {value: "People", title: "People"}],
-        
-},
-
-{
-        src: "images/grid_11.jpg",
-        thumbnail: "images/grid_11.jpg",
-        //thumbnailWidth: 320,
-        //thumbnailHeight: 174
-},
-{
-        src: "images/grid_12.jpg",
-        thumbnail: "images/grid_12.jpg",
-        //thumbnailWidth: 320,
-        //thumbnailHeight: 174
-},
-{
-        src: "images/grid_13.jpg",
-        thumbnail: "images/grid_13.jpg",
-        //thumbnailWidth: 320,
-        //thumbnailHeight: 174
-},
-{
-        src: "images/grid_14.jpg",
-        thumbnail: "images/grid_14.jpg",
-        //thumbnailWidth: 320,
-        //thumbnailHeight: 174
-},
-{
-        src: "images/grid_15.jpg",
-        thumbnail: "images/grid_15.jpg",
-        //thumbnailWidth: 320,
-        //thumbnailHeight: 174
-},
-{
-        src: "images/grid_16.jpg",
-        thumbnail: "images/grid_16.jpg",
-        //thumbnailWidth: 320,
-        //thumbnailHeight: 174
-},
-{
-        src: "images/grid_17.jpg",
-        thumbnail: "images/grid_17.jpg",
-        //thumbnailWidth: 320,
-        //thumbnailHeight: 174
-}]
 class PhotoGridPage extends Component {
+  constructor() {
+    super();
+    this.state = { currentImage: 0 };
+    this.closeLightbox = this.closeLightbox.bind(this);
+    this.openLightbox = this.openLightbox.bind(this);
+    this.gotoNext = this.gotoNext.bind(this);
+    this.gotoPrevious = this.gotoPrevious.bind(this);
+  }
+  openLightbox(event, obj) {
+    this.setState({
+      currentImage: obj.index,
+      lightboxIsOpen: true,
+    });
+  }
+  closeLightbox() {
+    this.setState({
+      currentImage: 0,
+      lightboxIsOpen: false,
+    });
+  }
+  gotoPrevious() {
+    this.setState({
+      currentImage: this.state.currentImage - 1,
+    });
+  }
+  gotoNext() {
+    this.setState({
+      currentImage: this.state.currentImage + 1,
+    });
+  }
 
-  render(){
-    return(
-      <Gallery images={IMAGES}/>         
+  render() {
+    return (
+      <div class="photo-grid">
+        <Gallery photos={photos} columns={columns} onClick={this.openLightbox}/>
+        <Lightbox images={photos}
+            onClose={this.closeLightbox}
+            onClickPrev={this.gotoPrevious}
+            onClickNext={this.gotoNext}
+            currentImage={this.state.currentImage}
+            isOpen={this.state.lightboxIsOpen}
+          />
+      </div>
     );
   }
 }

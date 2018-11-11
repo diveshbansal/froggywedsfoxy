@@ -13,18 +13,19 @@ module.exports = {
   },
   module : {
     rules : [
-      {
-        test: /\.css$/,
-        loader: 'style-loader!css-loader'
+      { 
+        test: /\.less$/,
+        use: [ 
+            'style-loader',
+            'css-loader?url=false', 
+            'less-loader'
+        ],
       },
       {
-        test: /\.png$/,
-        loader: 'url-loader?limit=100000&minetype=image/png'
-      },
-      {
-        test: /\.jpg/,
-        loader: 'file-loader'
-      },
+        test    : /\.(png|jpg|svg)$/,
+        include : path.join(__dirname, 'img'),
+        loader  : 'url-loader?limit=30000&name=images/[name].[ext]'
+      }, // inline base64 URLs for <=30k images, direct URLs for the rest,
       {
         test : /\.jsx?/,
         include : SRC_DIR,
